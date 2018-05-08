@@ -56,7 +56,7 @@ public class IPLDataResults {
 		buffReader = new BufferedReader(fileReader);
 		String currentLine;
 		String data[];
-		int inningsId, over, ball, runs, wicket, matchId;
+		int inningsId, over, ball, runs, wicket;
 		Team team1 = null;
 		Team team2 = null;
 		
@@ -89,8 +89,6 @@ public class IPLDataResults {
 			}
 
 		}
-		
-		
 		try {
 			Team.printTeamData(team1, team2, Team.matchId);
 			fileReader.close();
