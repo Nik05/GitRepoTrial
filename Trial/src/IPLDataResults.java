@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 class Team{
+	static int matchId;
 	private String teamName;
 	private int totalRuns;
 	public int getTotalRuns() {
@@ -64,7 +65,7 @@ public class IPLDataResults {
 			if(data[0].startsWith("match_id")) {
 				continue;
 			}
-			matchId = Integer.parseInt(data[0]);
+			Team.matchId = Integer.parseInt(data[0]);
 			inningsId = Integer.parseInt(data[1]);
 			over = Integer.parseInt(data[4]);
 			ball = Integer.parseInt(data[5]);
@@ -74,7 +75,7 @@ public class IPLDataResults {
 				if(over == 1) {
 					if(ball == 1) {
 						if(team1 != null || team2 != null) {
-							Team.printTeamData(team1, team2, matchId-1);
+							Team.printTeamData(team1, team2, Team.matchId-1);
 						}
 						team1 = new Team(data[2]);
 						team2 = new Team(data[3]);
@@ -91,6 +92,7 @@ public class IPLDataResults {
 		
 		
 		try {
+			Team.printTeamData(team1, team2, Team.matchId);
 			fileReader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
